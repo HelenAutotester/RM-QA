@@ -1,0 +1,9 @@
+﻿export class LoginPage {
+  constructor(private readonly page: import('@playwright/test').Page) {}
+  async navigate() { await this.page.goto('/login'); }
+  async login(email: string, password: string) {
+    await this.page.getByLabel('Email').fill(email);
+    await this.page.getByLabel('Password').fill(password);
+    await this.page.getByRole('button', { name: 'Login' }).click();
+  }
+}
